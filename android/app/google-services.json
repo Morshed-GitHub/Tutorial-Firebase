@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "326524985049",
+    "project_id": "dummy-c9d43",
+    "storage_bucket": "dummy-c9d43.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:326524985049:android:a618466148e76c90f368c8",
+        "android_client_info": {
+          "package_name": "com.raian.tutorial_firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "326524985049-ol6fdnbi3t4teh33dl6ksq2s5p07pl3f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSYTsUZxjnSR9pXO2bnWrScHJNsY7wfH0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "326524985049-ol6fdnbi3t4teh33dl6ksq2s5p07pl3f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
