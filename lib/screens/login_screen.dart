@@ -185,7 +185,11 @@ class _LoginScreenState extends State<LoginScreen> {
       },
       decoration: InputDecoration(
         labelText: "Password",
+        labelStyle: const TextStyle(
+          color: Colors.pink,
+        ),
         prefixIcon: const Icon(Icons.lock_outline_rounded),
+        prefixIconColor: Colors.pink,
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
         enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
@@ -211,8 +215,12 @@ class _LoginScreenState extends State<LoginScreen> {
       },
       decoration: InputDecoration(
         labelText: "Email",
+        labelStyle: const TextStyle(
+          color: Colors.pink,
+        ),
         hintText: "example@gmail.com",
         prefixIcon: const Icon(Icons.email_outlined),
+        prefixIconColor: Colors.pink,
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
         enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),

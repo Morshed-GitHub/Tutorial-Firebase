@@ -21,8 +21,7 @@ class _LoginScreenState extends State<SignupScreen> {
   // TextController holds the value/ input of TextFormField programmatically.
   //          MyController.text = 'new value' == (value){}
 
-  TextEditingController firstNameController = TextEditingController();
-  TextEditingController lastNameController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
@@ -70,8 +69,7 @@ class _LoginScreenState extends State<SignupScreen> {
   @override
   void dispose() {
     super.dispose();
-    firstNameController.dispose();
-    lastNameController.dispose();
+    nameController.dispose();
     emailController.dispose();
     passwordController.dispose();
     confirmPasswordController.dispose();
@@ -96,11 +94,11 @@ class _LoginScreenState extends State<SignupScreen> {
                     key: _formKey,
                     child: Column(
                       children: [
-                        firstNameInput(),
+                        nameInput(prefixName: "First"),
                         const SizedBox(
                           height: 20,
                         ),
-                        lastNameInput(),
+                        nameInput(prefixName: "Last"),
                         const SizedBox(
                           height: 20,
                         ),
@@ -198,7 +196,9 @@ class _LoginScreenState extends State<SignupScreen> {
       },
       decoration: InputDecoration(
           labelText: "Confirm Password",
+          labelStyle: const TextStyle(color: Colors.red),
           prefixIcon: const Icon(Icons.lock_outline_rounded),
+          prefixIconColor: Colors.pink,
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20),
               borderSide: const BorderSide(
@@ -228,7 +228,11 @@ class _LoginScreenState extends State<SignupScreen> {
       },
       decoration: InputDecoration(
           labelText: "Password",
+          labelStyle: const TextStyle(
+            color: Colors.pink,
+          ),
           prefixIcon: const Icon(Icons.lock_outline_rounded),
+          prefixIconColor: Colors.pink,
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20),
               borderSide: const BorderSide(
@@ -253,8 +257,12 @@ class _LoginScreenState extends State<SignupScreen> {
       },
       decoration: InputDecoration(
           labelText: "Email",
+          labelStyle: const TextStyle(
+            color: Colors.pink,
+          ),
           hintText: "example@gmail.com",
           prefixIcon: const Icon(Icons.email_outlined),
+          prefixIconColor: Colors.pink,
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20),
               borderSide: const BorderSide(
@@ -268,43 +276,22 @@ class _LoginScreenState extends State<SignupScreen> {
     );
   }
 
-  TextFormField lastNameInput() {
+  TextFormField nameInput({String? prefixName}) {
     return TextFormField(
-      controller: lastNameController,
+      controller: nameController,
       validator: (value) {
         if (value!.isEmpty) {
-          return "Last name can't be empty";
+          return "$prefixName name can't be empty";
         }
         return null;
       },
       decoration: InputDecoration(
-          labelText: "Last Name",
-          prefixIcon: const Icon(Icons.email_outlined),
-          enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20),
-              borderSide: const BorderSide(
-                color: Colors.pink,
-              )),
-          focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: Colors.pink),
-            borderRadius: BorderRadius.circular(20),
+          labelText: "$prefixName Name",
+          labelStyle: const TextStyle(
+            color: Colors.pink,
           ),
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20))),
-    );
-  }
-
-  TextFormField firstNameInput() {
-    return TextFormField(
-      controller: firstNameController,
-      validator: (value) {
-        if (value!.isEmpty) {
-          return "First name can't be empty";
-        }
-        return null;
-      },
-      decoration: InputDecoration(
-          labelText: "First Name",
           prefixIcon: const Icon(Icons.email_outlined),
+          prefixIconColor: Colors.pink,
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20),
               borderSide: const BorderSide(
