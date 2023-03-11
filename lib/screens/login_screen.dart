@@ -2,9 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:tutorial_firebase/screens/forget_password_screen.dart';
 import 'package:tutorial_firebase/screens/home_screen.dart';
 import 'package:tutorial_firebase/screens/registration_screen.dart';
 import 'package:tutorial_firebase/utils/utils.dart';
+import 'package:tutorial_firebase/widget/appbar.dart';
 import 'package:tutorial_firebase/widget/other_using_options.dart';
 import 'package:tutorial_firebase/widget/round_button.dart';
 
@@ -18,6 +20,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   bool isLoading = false;
+  bool isPasswordNotVisible = true;
 
   void moveToHomeScreen() {
     if (_formKey.currentState!.validate()) {
@@ -83,11 +86,8 @@ class _LoginScreenState extends State<LoginScreen> {
         return true;
       },
       child: Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          title: const Text("Login"),
-          centerTitle: true,
-          backgroundColor: Colors.pink,
+        appBar: const FirebaseAppBar(
+          title: "Login",
         ),
         body: ListView(
           padding: const EdgeInsets.all(20.0),
@@ -121,6 +121,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                 ),
                 const SizedBox(
+                  height: 10,
+                ),
+                forgetPassword(context),
+                const SizedBox(
                   height: 25,
                 ),
                 signupQueryOption(context),
@@ -131,6 +135,28 @@ class _LoginScreenState extends State<LoginScreen> {
               ],
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget forgetPassword(BuildContext context) {
+    return Align(
+      alignment: Alignment.bottomRight,
+      child: GestureDetector(
+        onTap: () async {
+          await Navigator.push(
+              context,
+              CupertinoPageRoute(
+                builder: (context) => const ForgetPasswordScreen(),
+              ));
+        },
+        child: const Text(
+          "Forgot Password?",
+          style: TextStyle(
+            color: Colors.pink,
+            fontSize: 16,
+          ),
         ),
       ),
     );
@@ -173,7 +199,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   TextFormField passwordInput() {
     return TextFormField(
-      obscureText: true,
+      obscureText: isPasswordNotVisible,
       controller: passwordController,
       validator: (value) {
         if (value!.isEmpty) {
@@ -188,8 +214,27 @@ class _LoginScreenState extends State<LoginScreen> {
         labelStyle: const TextStyle(
           color: Colors.pink,
         ),
+
+        // Prefix Part
         prefixIcon: const Icon(Icons.lock_outline_rounded),
         prefixIconColor: Colors.pink,
+
+        // Suffix Part
+        suffixIcon: IconButton(
+          onPressed: () {
+            isPasswordNotVisible =
+                !isPasswordNotVisible; // Visible <=> Not Visible
+            setState(() {});
+          },
+          icon: Icon(
+            (isPasswordNotVisible)
+                ? Icons.visibility_off_sharp
+                : Icons.visibility_sharp,
+          ),
+        ),
+        suffixIconColor: Colors.pink,
+
+        // Full Border Part
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
         enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),

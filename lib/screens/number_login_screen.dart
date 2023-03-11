@@ -5,6 +5,8 @@ import 'package:tutorial_firebase/screens/number_verification_screen.dart';
 import 'package:tutorial_firebase/utils/utils.dart';
 import 'package:tutorial_firebase/widget/round_button.dart';
 
+import '../widget/appbar.dart';
+
 class NumberLoginScreen extends StatefulWidget {
   const NumberLoginScreen({super.key});
 
@@ -61,11 +63,8 @@ class _NumberLoginScreenState extends State<NumberLoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.pink,
-        title: const Text("Login with number"),
-        centerTitle: true,
-        automaticallyImplyLeading: false,
+      appBar: const FirebaseAppBar(
+        title: "Login with number",
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),

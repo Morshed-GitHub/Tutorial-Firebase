@@ -7,6 +7,8 @@ import 'package:tutorial_firebase/utils/utils.dart';
 import 'package:tutorial_firebase/widget/other_using_options.dart';
 import 'package:tutorial_firebase/widget/round_button.dart';
 
+import '../widget/appbar.dart';
+
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
 
@@ -21,7 +23,8 @@ class _LoginScreenState extends State<SignupScreen> {
   // TextController holds the value/ input of TextFormField programmatically.
   //          MyController.text = 'new value' == (value){}
 
-  TextEditingController nameController = TextEditingController();
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
@@ -69,7 +72,7 @@ class _LoginScreenState extends State<SignupScreen> {
   @override
   void dispose() {
     super.dispose();
-    nameController.dispose();
+    firstNameController.dispose();
     emailController.dispose();
     passwordController.dispose();
     confirmPasswordController.dispose();
@@ -78,7 +81,7 @@ class _LoginScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: myAppBar(),
+      appBar: const FirebaseAppBar(title: "Signup"),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 40.0),
@@ -94,11 +97,17 @@ class _LoginScreenState extends State<SignupScreen> {
                     key: _formKey,
                     child: Column(
                       children: [
-                        nameInput(prefixName: "First"),
+                        nameInput(
+                          prefixName: "First",
+                          controller: firstNameController,
+                        ),
                         const SizedBox(
                           height: 20,
                         ),
-                        nameInput(prefixName: "Last"),
+                        nameInput(
+                          prefixName: "Last",
+                          controller: lastNameController,
+                        ),
                         const SizedBox(
                           height: 20,
                         ),
@@ -136,15 +145,6 @@ class _LoginScreenState extends State<SignupScreen> {
           ),
         ),
       ),
-    );
-  }
-
-  AppBar myAppBar() {
-    return AppBar(
-      automaticallyImplyLeading: false,
-      title: const Text("Signup"),
-      centerTitle: true,
-      backgroundColor: Colors.pink,
     );
   }
 
@@ -276,9 +276,10 @@ class _LoginScreenState extends State<SignupScreen> {
     );
   }
 
-  TextFormField nameInput({String? prefixName}) {
+  TextFormField nameInput(
+      {String? prefixName, required TextEditingController controller}) {
     return TextFormField(
-      controller: nameController,
+      controller: controller,
       validator: (value) {
         if (value!.isEmpty) {
           return "$prefixName name can't be empty";

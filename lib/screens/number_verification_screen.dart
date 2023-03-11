@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:tutorial_firebase/screens/home_screen.dart';
 
 import '../utils/utils.dart';
+import '../widget/appbar.dart';
 import '../widget/round_button.dart';
 
 class NumberVerificationScreen extends StatefulWidget {
@@ -29,12 +30,7 @@ class _NumberVerificationScreenState extends State<NumberVerificationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Number Verification"),
-        centerTitle: true,
-        automaticallyImplyLeading: false,
-        backgroundColor: Colors.pink,
-      ),
+      appBar: const FirebaseAppBar(title: "Number Verification"),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
