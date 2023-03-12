@@ -1,16 +1,27 @@
-# tutorial_firebase
+# Tutorial-Firebase
+This Flutter project showcases user authentication, Firebase Real Time/ Firestore Database CRUD operations, Firebase Storage file uploading, and text field validation. Auth methods include email, password, mobile number, and password reset.
 
-A new Flutter project.
+# Features
+# User Authentication  
+* Email and password-based sign-up and login functionality with Firebase Authentication  
+* Mobile number-based login functionality with Firebase Authentication  
+* Password reset functionality with Firebase Authentication  
+* Text field validations for email, password, confirm password, and other relevant fields  
+# Firebase Real Time Database CRUD Operations  
+* Create, read, update, and delete operations on a real-time database with Firebase Real Time Database  
+* Real-time updates for all database operations  
+# Firebase Firestore Database CRUD Operations  
+* Create, read, update, and delete operations on a cloud-hosted NoSQL database with Firebase Firestore Database  
+* Real-time updates for all database operations  
+# Image File Upload in Firebase Storage  
+* Upload images to Firebase Storage and retrieve their download URLs for use in your app  
 
-## Getting Started
+# Technologies
+This project is built using the Flutter framework for the mobile app, and utilizes Firebase services for authentication, database operations, and image storage.    
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+*  cloud_firestore:  
+*  firebase_auth:  
+*  firebase_core:  
+*  firebase_database:  
+*  firebase_storage:  
+*  image_picker:  
