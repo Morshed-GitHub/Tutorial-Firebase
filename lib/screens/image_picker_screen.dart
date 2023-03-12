@@ -39,7 +39,10 @@ class _ImagePickerScreenState extends State<ImagePickerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const FirebaseAppBar(title: "Image Picker"),
+      appBar: const FirebaseAppBar(
+        title: "Image Picker",
+        isBackButtonEnabled: true,
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: Column(
@@ -58,9 +61,7 @@ class _ImagePickerScreenState extends State<ImagePickerScreen> {
             RoundButton(
               title: "Upload",
               loading: isLoading,
-              onTap: () {
-                uploadImageFile();
-              },
+              onTap: uploadImageFile,
             )
           ],
         ),
@@ -107,7 +108,7 @@ class _ImagePickerScreenState extends State<ImagePickerScreen> {
     String id = DateTime.now().millisecondsSinceEpoch.toString();
     await firestoreRef.doc(id).set({
       "id": id,
-      "fileUrl": url,
+      "title": url,
     });
   }
 }

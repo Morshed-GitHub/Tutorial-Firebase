@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:tutorial_firebase/Firestore/firestore_home_screen.dart';
 import 'package:tutorial_firebase/screens/forget_password_screen.dart';
 import 'package:tutorial_firebase/screens/home_screen.dart';
 import 'package:tutorial_firebase/screens/registration_screen.dart';
@@ -44,8 +45,8 @@ class _LoginScreenState extends State<LoginScreen> {
             "Account login successful ✓");
 
         // If verfied, then navigate to home_page
-        await Navigator.of(context).pushReplacement(
-            CupertinoPageRoute(builder: (context) => const HomeScreen()));
+        await Navigator.of(context).pushReplacement(CupertinoPageRoute(
+            builder: (context) => const FirestoreHomeScreen()));
         setState(
             () {}); // Refresh screen in order to clear the "Email" & "Password" from login page (Pop action case)
       }).onError((error, stackTrace) {

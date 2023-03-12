@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tutorial_firebase/Firestore/firestore_home_screen.dart';
 import 'package:tutorial_firebase/screens/home_screen.dart';
 import 'package:tutorial_firebase/screens/login_screen.dart';
 import 'package:tutorial_firebase/utils/utils.dart';
@@ -48,8 +49,8 @@ class _LoginScreenState extends State<SignupScreen> {
           isLoading = false;
         });
 
-        await Navigator.of(context)
-            .push(CupertinoPageRoute(builder: (context) => const HomeScreen()));
+        await Navigator.of(context).push(CupertinoPageRoute(
+            builder: (context) => const FirestoreHomeScreen()));
 
         setState(
             () {}); // Refresh screen in order to clear the "Email" & "Password" from login page (Pop action case)

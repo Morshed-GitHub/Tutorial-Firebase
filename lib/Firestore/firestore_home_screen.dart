@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tutorial_firebase/Firestore/firestore_add_to_post_screen.dart';
 import 'package:tutorial_firebase/screens/add_to_post_screen.dart';
+import 'package:tutorial_firebase/screens/image_picker_screen.dart';
 import 'package:tutorial_firebase/screens/login_screen.dart';
 import 'package:tutorial_firebase/utils/utils.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
@@ -62,7 +63,20 @@ class _HomeScreenState extends State<FirestoreHomeScreen> {
       title: const Text("Firestore Home"),
       centerTitle: true,
       backgroundColor: Colors.pink,
+      leading: IconButton(
+        onPressed: navigateToImagePickerScreen,
+        icon: const Icon(Icons.add_a_photo_sharp),
+      ),
       actions: [logOutButton(context)],
+    );
+  }
+
+  Future<void> navigateToImagePickerScreen() async {
+    await Navigator.push(
+      context,
+      CupertinoPageRoute(
+        builder: (context) => const ImagePickerScreen(),
+      ),
     );
   }
 
@@ -148,9 +162,7 @@ class _HomeScreenState extends State<FirestoreHomeScreen> {
 
                 // Firebase Firestore part
                 final items = snapshot.data!.docs[index];
-                final titleOfItems = snapshot.data!.docs[index]["title"]
-                    .toString()
-                    .toLowerCase();
+                final titleOfItems = items["title"].toString().toLowerCase();
                 if (searchPostController.text.isEmpty) {
                   // If search bar is empty, then show all items
                   return Card(
