@@ -28,14 +28,16 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  cupertino_icons: ^1.0.2
-  firebase_core: ^2.7.0
-  firebase_storage: ^11.0.14
-  firebase_auth: ^4.2.9
   cloud_firestore: ^4.4.3
-  fluttertoast: ^8.2.1
+  cupertino_icons: ^1.0.2
+  firebase_auth: ^4.2.9
+  firebase_core: ^2.7.0
+  firebase_database: ^10.0.15
+  firebase_storage: ^11.0.14
   flutter:
     sdk: flutter
+  fluttertoast: ^8.2.1
+  image_picker: ^0.8.7
 
 dev_dependencies:
   flutter_lints: ^2.0.0

@@ -1,8 +1,7 @@
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:tutorial_firebase/Firestore/firestore_home_screen.dart';
-import 'package:tutorial_firebase/screens/home_screen.dart';
+import 'package:tutorial_firebase/screens/image_picker_screen.dart';
 import 'package:tutorial_firebase/screens/login_screen.dart';
 
 class SplashServices {
@@ -19,7 +18,8 @@ class SplashServices {
         await Navigator.of(context).pushReplacement(
           CupertinoPageRoute(
             // builder: (context) => const HomeScreen(),
-            builder: (context) => const FirestoreHomeScreen(),
+            // builder: (context) => const FirestoreHomeScreen(),
+            builder: (context) => const ImagePickerScreen(),
           ),
         );
       });
